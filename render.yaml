@@ -8,3 +8,9 @@ services:
     envVars:
       - key: PORT
         generateValue: false
+      - key: SMTP_FROM
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_TO
+        sync: false

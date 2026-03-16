@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"net/smtp"
 	"os"
 	"strings"
 	"time"
@@ -99,6 +101,10 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("CONTACT REQUEST | Name: %s | Email: %s | Phone: %s | Message: %s", name, email, phone, message)
+	go sendEmail(
+		"House of Bounce - New Contact Message from "+name,
+		fmt.Sprintf("Name: %s\nEmail: %s\nPhone: %s\n\nMessage:\n%s", name, email, phone, message),
+	)
 	renderHome(w, "Thanks for reaching out. We will contact you shortly.", true, false)
 }
 
@@ -125,6 +131,10 @@ func scheduleHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("SCHEDULING REQUEST | Client: %s | Date: %s | City: %s | Equipment: %s | Notes: %s", clientName, eventDate, eventCity, equipment, notes)
+	go sendEmail(
+		"House of Bounce - Scheduling Request from "+clientName,
+		fmt.Sprintf("Client: %s\nEvent Date: %s\nCity: %s\nEquipment: %s\n\nNotes:\n%s", clientName, eventDate, eventCity, equipment, notes),
+	)
 	renderHome(w, "Your scheduling request was submitted. We will confirm availability soon.", false, true)
 }
 
@@ -134,4 +144,25 @@ func loggingMiddleware(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 		log.Printf("%s %s from %s (%s)", r.Method, r.URL.Path, r.RemoteAddr, time.Since(start))
 	})
+}
+
+func sendEmail(subject, body string) {
+	from := os.Getenv("SMTP_FROM")
+	password := os.Getenv("SMTP_PASSWORD")
+	to := os.Getenv("SMTP_TO")
+	if from == "" || password == "" || to == "" {
+		log.Println("EMAIL: SMTP env vars not configured, skipping")
+		return
+	}
+	host := "smtp.gmail.com"
+	auth := smtp.PlainAuth("", from, password, host)
+	msg := []byte(fmt.Sprintf(
+		"To: %s\r\nFrom: House of Bounce <%s>\r\nSubject: %s\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n%s\r\n",
+		to, from, subject, body,
+	))
+	if err := smtp.SendMail(host+":587", auth, from, []string{to}, msg); err != nil {
+		log.Printf("EMAIL ERROR: %v", err)
+	} else {
+		log.Printf("EMAIL SENT: %s", subject)
+	}
 }
