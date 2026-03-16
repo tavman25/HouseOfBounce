@@ -43,7 +43,7 @@ func main() {
 		IdleTimeout:       60 * time.Second,
 	}
 
-	log.Printf("House of Bounce portal running on http://localhost:%s", port)
+	log.Printf("Our House of Bounce portal running on http://localhost:%s", port)
 	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("server error: %v", err)
 	}
@@ -58,7 +58,7 @@ func renderHome(w http.ResponseWriter, notice string, contactSuccess bool, sched
 	}
 
 	data := pageData{
-		Title:          "House of Bounce | Bounce House Rentals in Maine",
+		Title:          "Our House of Bounce | Bounce House Rentals in Maine",
 		Year:           time.Now().Year(),
 		Notice:         notice,
 		ContactSuccess: contactSuccess,
@@ -102,7 +102,7 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("CONTACT REQUEST | Name: %s | Email: %s | Phone: %s | Message: %s", name, email, phone, message)
 	go sendEmail(
-		"House of Bounce - New Contact Message from "+name,
+		"Our House of Bounce - New Contact Message from "+name,
 		fmt.Sprintf("Name: %s\nEmail: %s\nPhone: %s\n\nMessage:\n%s", name, email, phone, message),
 	)
 	renderHome(w, "Thanks for reaching out. We will contact you shortly.", true, false)
@@ -132,7 +132,7 @@ func scheduleHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("SCHEDULING REQUEST | Client: %s | Date: %s | City: %s | Equipment: %s | Notes: %s", clientName, eventDate, eventCity, equipment, notes)
 	go sendEmail(
-		"House of Bounce - Scheduling Request from "+clientName,
+		"Our House of Bounce - Scheduling Request from "+clientName,
 		fmt.Sprintf("Client: %s\nEvent Date: %s\nCity: %s\nEquipment: %s\n\nNotes:\n%s", clientName, eventDate, eventCity, equipment, notes),
 	)
 	renderHome(w, "Your scheduling request was submitted. We will confirm availability soon.", false, true)
@@ -157,7 +157,7 @@ func sendEmail(subject, body string) {
 	host := "smtp.gmail.com"
 	auth := smtp.PlainAuth("", from, password, host)
 	msg := []byte(fmt.Sprintf(
-		"To: %s\r\nFrom: House of Bounce <%s>\r\nSubject: %s\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n%s\r\n",
+		"To: %s\r\nFrom: Our House of Bounce <%s>\r\nSubject: %s\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n\r\n%s\r\n",
 		to, from, subject, body,
 	))
 	if err := smtp.SendMail(host+":587", auth, from, []string{to}, msg); err != nil {
