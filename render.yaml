@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: house-of-bounce
+    runtime: go
+    buildCommand: go build -o web ./cmd/web
+    startCommand: ./web
+    plan: free
+    envVars:
+      - key: PORT
+        generateValue: false

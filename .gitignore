@@ -1,0 +1,6 @@
+*.exe
+web
+/tmp/
+*.log
+.env
+.DS_Store

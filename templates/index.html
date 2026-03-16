@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="House of Bounce offers clean, safe, and exciting bounce house rentals across Maine.">
+    <title>{{.Title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand-wrap">
+            <img class="brand-logo" src="/static/img/house-of-bounce-logo-transparent-v2.png" alt="House of Bounce logo">
+            <div>
+                <p class="eyebrow">Maine Bounce House Rentals</p>
+                <h1>House of Bounce</h1>
+            </div>
+        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="#info">Info</a>
+            <a href="#units">Units</a>
+            <a href="#contact">Contact</a>
+            <a href="#schedule" class="nav-cta">Schedule</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-content">
+                <p class="hero-kicker">Bright. Safe. Unforgettable.</p>
+                <h2>Bring the party to life with premium bounce house rentals in Maine.</h2>
+                <p>From backyard birthdays to school and community events, House of Bounce delivers clean equipment, reliable setup, and joyful experiences families remember.</p>
+                <div class="hero-actions">
+                    <a href="#schedule" class="btn btn-primary">Request a Booking</a>
+                    <a href="#contact" class="btn btn-secondary">Talk to Our Team</a>
+                </div>
+            </div>
+            <div class="hero-card" aria-label="Service area and trust highlights">
+                <h3>Why families choose us</h3>
+                <ul>
+                    <li>Commercial-grade, fair-grade rental inflatables</li>
+                    <li>Inspected and sanitized before every event</li>
+                    <li>Free setup, removal, and cleaning within 30 miles of Houlton</li>
+                    <li>No hidden fees for cleaning, water, or basic power setup</li>
+                    <li>Serving northern Maine communities up to 100 miles</li>
+                </ul>
+            </div>
+        </section>
+
+        {{if .Notice}}
+        <section class="notice {{if .ContactSuccess}}success{{else if .ScheduleSent}}success{{else}}warning{{end}}" aria-live="polite">
+            <p>{{.Notice}}</p>
+        </section>
+        {{end}}
+
+        <section class="panel info" id="info">
+            <div class="panel-heading">
+                <p class="eyebrow">Info</p>
+                <h2>Professional rentals with a playful spirit.</h2>
+            </div>
+            <div class="grid-two">
+                <article>
+                    <h3>What we offer</h3>
+                    <p>Bright bounce houses and party inflatables for birthdays, schools, churches, fundraisers, and community events across northern Maine.</p>
+                </article>
+                <article>
+                    <h3>Service area</h3>
+                    <p>We provide free setup, removal, and cleaning within 30 miles of Houlton, Maine. We also travel up to 100 miles.</p>
+                </article>
+                <article>
+                    <h3>Simple pricing policy</h3>
+                    <p>For events more than 30 miles from Houlton, we charge a flat $50 delivery and removal fee. No extra cleaning, water, or hidden service fees.</p>
+                </article>
+                <article>
+                    <h3>Power support included</h3>
+                    <p>We provide the electrical cords needed for setup, and we can supply a generator when required at no additional charge.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel units" id="units">
+            <div class="panel-heading">
+                <p class="eyebrow">Units</p>
+                <h2>Unit sizes and equipment quality.</h2>
+            </div>
+            <div class="unit-grid">
+                <article class="unit-card">
+                    <img src="/Images/10611f2c-e620-4fae-b4d4-c77939ad9562.jpg" alt="House of Bounce Lego Castle inflatable" loading="lazy">
+                    <h3>Lego Castle</h3>
+                    <p><strong>Size:</strong> 14 ft wide x 14 ft long x 14 ft tall</p>
+                    <p>Our entry-size full-feature bounce unit, ideal for backyard birthdays and younger age groups.</p>
+                </article>
+                <article class="unit-card">
+                    <img src="/Images/f8249539-46d6-487f-a0ae-92fe5382aeff.jpg" alt="House of Bounce Princess Castle inflatable" loading="lazy">
+                    <h3>Princess Castle</h3>
+                    <p><strong>Size:</strong> 14 ft wide x 14 ft long x 14 ft tall</p>
+                    <p>A popular themed unit with the same spacious footprint as our Lego Castle model.</p>
+                </article>
+                <article class="unit-card unit-note">
+                    <h3>Growing inventory</h3>
+                    <p>These are our smallest units. Additional units increase in size from this baseline, and our lineup continues to grow each season.</p>
+                </article>
+            </div>
+            <p class="quality-note"><strong>Quality standard:</strong> House of Bounce uses high-grade commercial and fair-grade rental inflatables designed for frequent professional use.</p>
+            <div class="gallery-strip" aria-label="Additional House of Bounce unit photos">
+                <img src="/Images/2969bb54-f6cb-4cb3-8181-563db79921a9.jpg" alt="House of Bounce inflatable rental photo" loading="lazy">
+                <img src="/Images/8e247855-c5a9-4c07-a9da-320b70d3f79d.jpg" alt="House of Bounce inflatable rental photo" loading="lazy">
+                <img src="/Images/983e8ce4-af8a-43d7-9f16-c60ccbb9462c.jpg" alt="House of Bounce inflatable rental photo" loading="lazy">
+                <img src="/Images/df2b1f48-e94e-43b9-b81b-ce1ecdf6e226.jpg" alt="House of Bounce inflatable rental photo" loading="lazy">
+            </div>
+        </section>
+
+        <section class="panel team" id="team">
+            <div class="panel-heading">
+                <p class="eyebrow">Family Team</p>
+                <h2>Locally run, hands-on, and community-focused.</h2>
+            </div>
+            <div class="grid-two">
+                <article>
+                    <h3>Operations and upkeep</h3>
+                    <p>Our maintenance lead inspects units, seams, and blowers after every rental, and our sanitation process ensures each inflatable is cleaned before the next event.</p>
+                </article>
+                <article>
+                    <h3>Booking and business support</h3>
+                    <p>Our family team coordinates customer communication, bookkeeping, and inventory growth so your event setup stays simple and dependable.</p>
+                </article>
+                <article>
+                    <h3>Social media and outreach</h3>
+                    <p>We actively share setup and event videos across social channels to help customers see our process and confidence in every rental.</p>
+                </article>
+                <article>
+                    <h3>Community-first approach</h3>
+                    <p>As a growing Maine small business, we focus on fair pricing, word-of-mouth trust, and giving back through local support when possible.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel contact" id="contact">
+            <div class="panel-heading">
+                <p class="eyebrow">Contact</p>
+                <h2>Get in touch with House of Bounce.</h2>
+            </div>
+            <div class="contact-layout">
+                <div>
+                    <p class="lead">Have a question about availability, setup needs, or event recommendations? Send us a message and we will follow up promptly.</p>
+                    <ul class="contact-list">
+                        <li><strong>Phone:</strong> <a href="tel:+12074328735">(207) 432-8735</a></li>
+                        <li><strong>Email:</strong> <a href="mailto:ourhouseofbounce@gmail.com">ourhouseofbounce@gmail.com</a></li>
+                        <li><strong>Contacts:</strong> Shanon or Bob MacQueston</li>
+                        <li><strong>Hours:</strong> Mon-Sat, 8:00 AM-6:00 PM</li>
+                        <li><strong>Base:</strong> Houlton, Maine</li>
+                    </ul>
+                </div>
+                <form class="card-form" method="post" action="/contact">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required>
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+
+                    <label for="phone">Phone (optional)</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="panel schedule" id="schedule">
+            <div class="panel-heading">
+                <p class="eyebrow">Scheduling</p>
+                <h2>Request your event date.</h2>
+            </div>
+            <form class="card-form schedule-form" method="post" action="/schedule">
+                <div class="form-grid">
+                    <div>
+                        <label for="client_name">Client Name</label>
+                        <input id="client_name" name="client_name" type="text" autocomplete="name" required>
+                    </div>
+                    <div>
+                        <label for="event_date">Event Date</label>
+                        <input id="event_date" name="event_date" type="date" required>
+                    </div>
+                    <div>
+                        <label for="event_city">Event City (Maine)</label>
+                        <input id="event_city" name="event_city" type="text" required>
+                    </div>
+                    <div>
+                        <label for="equipment">Inflatable Type</label>
+                        <select id="equipment" name="equipment">
+                            <option value="">Select one</option>
+                            <option>Classic Bounce House</option>
+                            <option>Bounce and Slide Combo</option>
+                            <option>Toddler Play Zone</option>
+                            <option>Not Sure Yet</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="notes">Event Notes</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Party size, setup notes, power access, etc."></textarea>
+
+                <button type="submit" class="btn btn-primary">Submit Scheduling Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; {{.Year}} House of Bounce &mdash; Shanon &amp; Bob MacQueston &mdash; Houlton, Maine</p>
+        <p><a href="tel:+12074328735">(207) 432-8735</a> &nbsp;&bull;&nbsp; <a href="mailto:ourhouseofbounce@gmail.com">ourhouseofbounce@gmail.com</a></p>
+    </footer>
+
+    <script src="/static/js/main.js" defer></script>
+</body>
+</html>
